@@ -27,7 +27,7 @@ const BlogCard = ({ image, prompt, name, style }: Props) => {
       <div className="absolute bottom-0 left-0 right-0 bg-black/70 max-h-[94.5%] p-4 rounded-md text-white opacity-0 group-hover:opacity-100 transition-opacity">
         <p>{prompt}</p>
 
-        <div className="flex justify-between items-center mt-4">
+        <div className="flex justify-between items-center mt-4 overflow-y-auto">
           <div className="flex items-center gap-1">
             <span className="w-8 h-8 flex justify-center items-center bg-green-600 rounded-full">
               {name[0]}
