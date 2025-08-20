@@ -10,7 +10,9 @@ const page = async ({
   const { query } = await searchParams;
 
   const res = await fetch(
-    `http://localhost:5000/api/v1/post${query ? `?query=${query}` : ""}`
+    `${process.env.NEXT_PUBLIC_URL_ENDPOINT}/api/v1/post${
+      query ? `?query=${query}` : ""
+    }`
   );
 
   const posts: Post[] = await res.json();

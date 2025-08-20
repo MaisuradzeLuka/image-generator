@@ -34,13 +34,16 @@ const page = () => {
     setIsLoadingShare(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/v1/post/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, prompt, image }),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_URL_ENDPOINT}/api/v1/post/add`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, prompt, image }),
+        }
+      );
 
       const data = await res.json();
 
@@ -70,16 +73,21 @@ const page = () => {
 
     setIsLoading(true);
 
+    console.log(`${process.env.NEXT_PUBLIC_URL_ENDPOINT}/api/v1/dalle`);
+
     try {
-      const res = await fetch("http://localhost:5000/api/v1/dalle", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          prompt,
-        }),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_URL_ENDPOINT}/api/v1/dalle`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            prompt,
+          }),
+        }
+      );
 
       if (!res.ok) {
         setError("Failed to generate image");
